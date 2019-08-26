@@ -1,0 +1,31 @@
+.navBar {
+    background-color: blueviolet;
+    border-bottom: solid;
+    border-bottom-color: steelblue;
+}
+img {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+}
+#sitename {
+    font-size: 500%;
+    color: white;
+}
+.nav {
+    margin: 0;
+    padding: 0;
+}
+.item {
+    margin: 0;
+    padding: 0;
+}
+button {
+    cursor: pointer;
+    color: white;
+    background-color: steelblue;
+}
+button:hover {
+    color: blueviolet;
+    background-color: white;
+}

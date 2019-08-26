@@ -1,6 +1,11 @@
 import React from 'react';
 import '../styles/app.css';
+import NavBar from './navBar';
 
-const App = () => <h1>Hello World</h1>;
+const App = () => {
+  return (
+    <NavBar />
+  );
+};
 
 export default App;
