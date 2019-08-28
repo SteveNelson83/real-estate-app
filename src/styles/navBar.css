@@ -1,7 +1,7 @@
 .navBar {
     background-color: blueviolet;
-    border-bottom: solid;
-    border-bottom-color: steelblue;
+    border: solid;
+    border-color: steelblue;
 }
 img {
     height: 80px;

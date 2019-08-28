@@ -2,5 +2,16 @@
     color: blueviolet;
     background-color: darkblue;
     padding: 20px;
+}
+h1 {
     text-decoration: underline;
+}
+#formbox {
+    display: flex;
+}
+span {
+    padding-right: 5px;
+}
+button {
+    align-self: flex-end;
 }
