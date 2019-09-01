@@ -1,23 +1,39 @@
 /* eslint-disable no-console */
 import React from 'react';
+import axios from 'axios';
 import '../styles/addProperty.css';
 
 class AddProperty extends React.Component {
-  state = {
-    fields: {
-      title: '',
-      type: 'Flat',
-      bedrooms: '',
-      bathrooms: '',
-      price: '',
-      city: 'Manchester',
-      email: '',
-    },
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      fields: {
+        title: '',
+        type: 'Flat',
+        bedrooms: '',
+        bathrooms: '',
+        price: '',
+        city: 'Manchester',
+        email: '',
+      },
+    };
+  }
 
   handleAddProperty = event => {
     event.preventDefault();
-    console.log(this.state.fields);
+    axios.post('http://localhost:3000/api/v1/PropertyListing', {
+      title: this.state.fields.title,
+      type: this.state.fields.type,
+      city: this.state.fields.city,
+      bedrooms: this.state.fields.bedrooms,
+      bathrooms: this.state.fields.bathrooms,
+      price: this.state.fields.price,
+      email: this.state.fields.email,
+    })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      });
   };
 
   handleFieldChange = event => {
