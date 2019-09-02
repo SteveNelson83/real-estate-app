@@ -2,6 +2,7 @@
 import React from 'react';
 import axios from 'axios';
 import '../styles/addProperty.css';
+import Alert from '../components/alert';
 
 class AddProperty extends React.Component {
   constructor(props) {
@@ -15,12 +16,20 @@ class AddProperty extends React.Component {
         price: '',
         city: 'Manchester',
         email: '',
+        alertMessage: '',
+        isSuccess: false,
+        isError: false,
       },
     };
   }
 
   handleAddProperty = event => {
     event.preventDefault();
+    this.setState({
+      alertMessage: '',
+      isSuccess: false,
+      isError: false,
+    })
     axios.post('http://localhost:3000/api/v1/PropertyListing', {
       title: this.state.fields.title,
       type: this.state.fields.type,
@@ -30,10 +39,15 @@ class AddProperty extends React.Component {
       price: this.state.fields.price,
       email: this.state.fields.email,
     })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      });
+      .then(() => this.setState({
+        isSuccess: true,
+        alertMessage: 'Property added.',
+      }));
+      .catch((err) => {
+        this.setState({
+          alertMessage: 'Server error. Please try again later.',
+          isError: true,
+        }));
   };
 
   handleFieldChange = event => {
@@ -50,6 +64,8 @@ class AddProperty extends React.Component {
       <div className="AddProperty">
         <h1>Add Property Page</h1>
         <form id="formbox" onSubmit={this.handleAddProperty}>
+          {this.state.isSuccess && <Alert message={this.state.alertMessage} success />}
+          {this.state.isError && <Alert message={this.state.alertMessage} />}
           <span>
             <div>Title</div>
             <input name="title" value={this.state.fields.title} onChange={this.handleFieldChange} />
