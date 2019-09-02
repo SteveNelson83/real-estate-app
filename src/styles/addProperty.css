@@ -15,3 +15,12 @@ span {
 button {
     align-self: flex-end;
 }
+.Alert{
+    color: grey;
+    background-color: red;
+}
+
+.Alert.success {
+    color: grey;
+    background-color: green;
+}

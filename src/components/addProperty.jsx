@@ -42,12 +42,11 @@ class AddProperty extends React.Component {
       .then(() => this.setState({
         isSuccess: true,
         alertMessage: 'Property added.',
+      }))
+      .catch(() => this.setState({
+        alertMessage: 'Server error. Please try again later.',
+        isError: true,
       }));
-      .catch((err) => {
-        this.setState({
-          alertMessage: 'Server error. Please try again later.',
-          isError: true,
-        }));
   };
 
   handleFieldChange = event => {
@@ -63,9 +62,9 @@ class AddProperty extends React.Component {
     return (
       <div className="AddProperty">
         <h1>Add Property Page</h1>
+        {this.state.isSuccess && <Alert message={this.state.alertMessage} success />}
+        {this.state.isError && <Alert message={this.state.alertMessage} />}
         <form id="formbox" onSubmit={this.handleAddProperty}>
-          {this.state.isSuccess && <Alert message={this.state.alertMessage} success />}
-          {this.state.isError && <Alert message={this.state.alertMessage} />}
           <span>
             <div>Title</div>
             <input name="title" value={this.state.fields.title} onChange={this.handleFieldChange} />
