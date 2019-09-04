@@ -21,7 +21,10 @@ class Properties extends React.Component {
     const currentQueryParams = qs.parse(search, { ignoreQueryPrefix: true });
     const newQueryParams = {
       ...currentQueryParams,
-      [operation]: JSON.stringify(valueObj),
+      [operation]: JSON.stringify({
+        ...JSON.parse(currentQueryParams[operation] || '{}'),
+        ...valueObj,
+      }),
     };
     return qs.stringify(newQueryParams, { addQueryPrefix: true, encode: false });
   };
@@ -82,12 +85,10 @@ class Properties extends React.Component {
           <br />
           <Link to={this.buildQueryString('sort', { price: -1 })}>High to Low</Link>
         </div>
+        <h1>Property List</h1>
         <div id="propertyGrid">
-          <h1>Property List</h1>
           {this.state.properties.map(property => (
-            <div key={property._id}>
-              <PropertyCard {...property} />
-            </div>
+            <PropertyCard {...property} key={property._id} />
           ))}
         </div>
       </div>

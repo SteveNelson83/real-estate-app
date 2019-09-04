@@ -2,8 +2,9 @@
     border: solid;
     border-color: blueviolet;
     background-color: steelblue;
-    width: 20%;
-    float: left;
+    margin: 20px;
+    min-width: 170px;
+    width: 25%
 }
 #smalligloo {
     height: 100px;
