@@ -35,6 +35,11 @@ class Properties extends React.Component {
     }
   }
 
+  buildQueryString = (operation, valueObj) => {
+    const { location: { search } } = this.props;
+    const currentQueryParams = qs.parse(search, { ignoreQueryPrefix: true });
+  }
+
   render() {
     return (
       <div id="propertyGrid">

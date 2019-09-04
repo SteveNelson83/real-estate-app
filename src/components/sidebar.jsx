@@ -14,6 +14,10 @@ const Sidebar = () => (
     <br />
     <Link to={`/?query={"city": "Sheffield"}`}>Sheffield</Link>
     <br />
+    <h2>Sort by Price</h2>
+    <Link to={`/?sort={"price":1}`}>Low to High</Link>
+    <br />
+    <Link to={`/?sort={"price":-1}`}>High to Low</Link>
   </div>
 );
 
