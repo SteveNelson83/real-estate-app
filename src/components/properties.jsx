@@ -26,6 +26,15 @@ class Properties extends React.Component {
       }));
   }
 
+  componentDidUpdate(prevProps) {
+    const { search } = this.props.location;
+    if (prevProps.location.search !== search) {
+      axios.get(`http://localhost:3000/api/v1/PropertyListing${search}`)
+        .then(({ data: properties }) => this.setState({ properties }))
+        .catch(err => console.error(err));
+    }
+  }
+
   render() {
     return (
       <div id="propertyGrid">
