@@ -1,0 +1,18 @@
+.propertyCard {
+    border: solid;
+    border-color: blueviolet;
+    background-color: steelblue;
+    width: 20%;
+    float: left;
+}
+#smalligloo {
+    height: 100px;
+    width: 100px;
+}
+#title {
+    font-size: 150%;
+    text-align: right;
+}
+#picture {
+    text-align: center;
+}

@@ -1,12 +1,16 @@
 /* eslint-disable no-console */
 import React from 'react';
 import axios from 'axios';
+import PropertyCard from './propertyCard';
+import '../styles/propertyCard.css';
+import '../styles/properties.css';
 
 class Properties extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       properties: [],
+      error: false,
     };
   }
 
@@ -16,16 +20,21 @@ class Properties extends React.Component {
         const properties = res.data;
         this.setState({ properties });
         console.log(this.state.properties);
-      });
+      })
+      .catch(() => this.setState({
+        error: true,
+      }));
   }
 
   render() {
     return (
-      <div>
+      <div id="propertyGrid">
         <h1>Property List</h1>
-        <ul>
-          {this.state.properties.map(property => <li key={property._id}>{property.title}</li>)}
-        </ul>
+        {this.state.properties.map(property => (
+          <div key={property._id}>
+            <PropertyCard {...property} />
+          </div>
+        ))}
       </div>
     );
   }
